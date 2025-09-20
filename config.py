@@ -8,11 +8,6 @@ class Config:
     # Google credentials: path to service account key JSON
     GOOGLE_APPLICATION_CREDENTIALS = os.getenv("GOOGLE_APPLICATION_CREDENTIALS", "service-account.json")
 
-    # What to watch
-    SPREADSHEET_ID = os.getenv("SPREADSHEET_ID", "")
-    WORKSHEET_NAME = os.getenv("WORKSHEET_NAME", "Sheet1")
-    CELL = os.getenv("CELL", "A1")
-
     # Telegram
     TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "")
     TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "")
@@ -30,8 +25,7 @@ class Config:
     @classmethod
     def validate(cls):
         missing = []
-        for key in ("SPREADSHEET_ID", "WORKSHEET_NAME", "CELL",
-                    "TELEGRAM_BOT_TOKEN", "TELEGRAM_CHAT_ID"):
+        for key in ("CELLS_CONFIG_FILE", "TELEGRAM_BOT_TOKEN", "TELEGRAM_CHAT_ID"):
             if not getattr(cls, key):
                 missing.append(key)
         if missing:
