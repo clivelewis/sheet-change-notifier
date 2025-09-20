@@ -1,0 +1,5 @@
+.env
+venv/
+cells_config.json
+state.json
+service_account.json
